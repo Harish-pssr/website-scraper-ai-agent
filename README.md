@@ -22,15 +22,14 @@ The project uses modern tools like **Pydantic AI**, **BeautifulSoup**, and FastA
 ## **Setup**
 
 ### **Prerequisites**
-- Python 3.8 or higher
 - A valid AI model API key
 - A valid authorization token for securing the API
 
 ### **Installation**
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-username/your-repo.git
-   cd your-repo
+   git clone https://github.com/Harish-pssr/website-scraper-ai-agent.git
+   cd website-scraper-ai-agent
    ```
 
 2. Create and activate a virtual environment:
@@ -46,9 +45,9 @@ The project uses modern tools like **Pydantic AI**, **BeautifulSoup**, and FastA
 
 4. Set up environment variables in a `.env` file (optional but recommended):
    ```
-   MODEL_NAME=ni-1.5-flash
-   MODEL_API_KEY=your-model-api-key
-   AUTHORIZATION_TOKEN=your-authorization-token
+   MODEL_NAME=<your_AI_model_name>
+   MODEL_API_KEY=<your-model-api-key>
+   AUTHORIZATION_TOKEN=<your-authorization-token>
    ```
 
 5. Run the application:
@@ -60,7 +59,7 @@ The project uses modern tools like **Pydantic AI**, **BeautifulSoup**, and FastA
 
 ## **Project Structure**
 ```plaintext
-project/
+website-scraper-ai-agent/
 ├── app/
 │   ├── __init__.py           # Initializes the app package
 │   ├── main.py               # Entry point for the FastAPI application
@@ -70,17 +69,14 @@ project/
 │   ├── services.py           # Business logic (e.g., scraping and AI analysis)
 │   ├── initializer.py        # Initializes shared resources like the AI agent
 │   └── config.py             # Configuration and environment variable handling
-├── .env                      # Environment variables (not committed to version control)
 ├── requirements.txt          # List of dependencies
 └── README.md                 # Documentation
 ```
 
 ---
 
-## **Usage**
-
-### **Endpoints**
-#### **1. Health Check**
+## **Endpoints**
+### **1. Health Check**
 - **URL**: `GET /`
 - **Description**: Verifies if the API is running.
 - **Response**:
@@ -90,7 +86,7 @@ project/
   }
   ```
 
-#### **2. Scrape Website**
+### **2. Scrape Website**
 - **URL**: `POST /scrape`
 - **Description**: Scrapes the homepage content of the given URL and extracts structured information.
 - **Request Body**:
@@ -112,12 +108,28 @@ project/
 
 ---
 
-## **Authentication**
-The application uses token-based authentication. Set the `Authorization` header as follows:
-```plaintext
-Authorization: Bearer <your-token>
-```
-Tokens are validated against the `AUTHORIZATION_TOKEN` environment variable.
+## Model Information:
+This project uses the **Gemini Flash 1.5** model (`gemini-flash-1.5`) for AI-based website content analysis.
+
+---
+
+## Environment Variables:
+The application relies on the following environment variables, which should be set up in your deployment environment:
+
+1. **`MODEL_NAME`**:
+   - **Purpose**: Specifies the AI model to be used.
+   - **Example Value**: `gemini-flash-1.5`
+
+2. **`MODEL_API_KEY`**:
+   - **Purpose**: API key for authenticating with the model provider.
+   - **Example Value**: `your-model-api-key`
+
+3. **`AUTHORIZATION_TOKEN`**:
+   - **Purpose**: Token used for securing API access. It is required in the `Authorization` header for all secure endpoints.
+   - **Example Format**:
+     ```
+     Bearer your-authorization-token
+     ```
 
 ---
 
@@ -140,5 +152,7 @@ To test the API:
 1. Use **Postman** or **Swagger UI** (`/docs`).
 2. Include the `Authorization` header for secure endpoints.
 3. Send a `POST` request to `/scrape` with the website URL.
+
+---
 
 Thank you for using the **AI Agent for Website Scraping**! We hope it meets your needs and simplifies your workflow. Feel free to reach out with any feedback or suggestions!
