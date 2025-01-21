@@ -5,7 +5,7 @@ from app.services import fetch_homepage_content, parse_homepage_content_with_ai
 # Initialize the API router
 router = APIRouter()
 
-@router.post("/scrape", response_model=ScrapingResponse, tags=["Scraping"])
+@router.post("/scrape", response_model=ScrapingResponse)
 async def scrape_website(request: ScrapingRequest):
     """
     Scrapes the homepage of the given website URL and extracts relevant details.
